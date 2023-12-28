@@ -22,6 +22,7 @@ app.get("/yt-dlp", (req, res) => {
   res.setHeader("Content-Disposition", `attachment; filename="video.mp4"`);
 
   ls.stdout.on("data", (data) => {
+    console.log(data.toString());
     res.write(data);
   });
 
