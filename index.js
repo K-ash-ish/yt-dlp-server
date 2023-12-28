@@ -12,9 +12,9 @@ app.get("/", (req, res) => {
 
 app.get("/yt-dlp", (req, res) => {
   const { url } = req.query;
-  const ytDlpPath = path.join(__dirname, "resources", "yt-dlp.exe");
+  const ytDlpPath = path.join(__dirname, "resources", "yt-dlp");
 
-  let command = `${ytDlpPath} -f bv*[ext=mp4]+ba/b -o - ${url}`;
+  let command = `chmod +x ${ytDlpPath} -f bv*[ext=mp4]+ba/b -o - ${url}`;
   console.log("path: ", ytDlpPath);
   console.log("command: ", command);
   const ls = spawn(command, [], { shell: true });
