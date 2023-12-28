@@ -16,6 +16,7 @@ app.get("/yt-dlp", (req, res) => {
 
   let command = `"${ytDlpPath}" -f bv*[ext=mp4]+ba/b -o - "${url}"`;
   console.log("path: ", ytDlpPath);
+  console.log("command: ", command);
   const ls = spawn(command, [], { shell: true });
 
   res.setHeader("Content-Type", "video/mp4");
