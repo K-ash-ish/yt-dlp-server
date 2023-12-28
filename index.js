@@ -7,6 +7,7 @@ const PORT = 3000;
 
 app.get("/", (req, res) => {
   res.send("Hello world");
+  ``;
 });
 
 app.get("/yt-dlp", (req, res) => {
@@ -14,6 +15,7 @@ app.get("/yt-dlp", (req, res) => {
   const ytDlpPath = path.join(__dirname, "resources", "yt-dlp");
 
   let command = `"${ytDlpPath}" -f bv*[ext=mp4]+ba/b -o - "${url}"`;
+  console.log("path: ", ytDlpPath);
   const ls = spawn(command, [], { shell: true });
 
   res.setHeader("Content-Type", "video/mp4");
