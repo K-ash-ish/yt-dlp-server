@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 app.get("/", (req, res) => {
-  const ytDlpPath = path.join(__dirname, "resources", "yt-dlp.exe");
+  const ytDlpPath = path.join(__dirname, "resources", "yt-dlp_linux");
   console.log(os.hostname());
   console.log(os.platform());
   console.log(os.type());
@@ -39,12 +39,12 @@ app.get("/", (req, res) => {
 
 app.get("/yt-dlp", (req, res) => {
   const { url } = req.query;
-  const ytDlpPath = path.join(__dirname, "resources", "yt-dlp.exe");
+  const ytDlpPath = path.join(__dirname, "resources", "yt-dlp_linux");
   console.log("Inside YT_DLP ");
 
   // let command = `${ytDlpPath} -f bv*[ext=mp4]+ba/b -o - ${url}`;
 
-  const ls = spawn(ytDlpPath, ["-o" ,"-",url], { shell: true });
+  const ls = spawn(ytDlpPath, ["-o", "-", url], { shell: true });
 
   res.setHeader("Content-Type", "video/mp4");
   res.setHeader("Content-Disposition", `attachment; filename="video.mp4"`);
