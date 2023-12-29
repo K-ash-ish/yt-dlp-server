@@ -1,11 +1,12 @@
 const express = require("express");
 const { exec, spawn } = require("child_process");
+const os = require("os");
 const path = require("path");
-const fs = require("fs");
 const app = express();
 const PORT = 3000;
 
 app.get("/", (req, res) => {
+  console.log(os.hostname());
   res.send("Hello world");
   ``;
 });
@@ -14,7 +15,7 @@ app.get("/yt-dlp", (req, res) => {
   const { url } = req.query;
   const ytDlpPath = path.join(__dirname, "resources", "yt-dlp");
 
-  let command = `chmod +x ${ytDlpPath} -f bv*[ext=mp4]+ba/b -o - ${url}`;
+  let command = `${ytDlpPath} -f bv*[ext=mp4]+ba/b -o - ${url}`;
   console.log("path: ", ytDlpPath);
   console.log("command: ", command);
   const ls = spawn(command, [], { shell: true });
