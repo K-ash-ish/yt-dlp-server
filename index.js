@@ -42,7 +42,7 @@ app.get("/yt-dlp", (req, res) => {
   const ytDlpPath = path.join(__dirname, "resources", "yt-dlp.exe");
   console.log("Inside YT_DLP ");
 
-  let command = `${ytDlpPath} ${url}`;
+  let command = `${ytDlpPath} "${url}"`;
   // let command = `${ytDlpPath} -f bv*[ext=mp4]+ba/b -o - ${url}`;
   console.log("path: ", ytDlpPath);
   console.log("command: ", command);
