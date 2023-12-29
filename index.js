@@ -11,30 +11,30 @@ app.get("/", (req, res) => {
   console.log(os.hostname());
   console.log(os.platform());
   console.log(os.type());
-  res.send("Hello world");
+  res.send("Video Downloader");
 
-  fs.chmodSync(ytDlpPath, 0o755);
-  fs.stat(ytDlpPath, (err, stats) => {
-    if (err) {
-      console.error(`Error checking file permissions: ${err.message}`);
-    } else {
-      const mode = stats.mode & 0o777; // Extract the permission bits
-      console.log(
-        `File permissions for yt-dlp: ${mode.toString(8)} ${parseInt(
-          stats.mode.toString(8),
-          10
-        )}`
-      );
+  // fs.chmodSync(ytDlpPath, 0o755);
+  // fs.stat(ytDlpPath, (err, stats) => {
+  //   if (err) {
+  //     console.error(`Error checking file permissions: ${err.message}`);
+  //   } else {
+  //     const mode = stats.mode & 0o777; // Extract the permission bits
+  //     console.log(
+  //       `File permissions for yt-dlp: ${mode.toString(8)} ${parseInt(
+  //         stats.mode.toString(8),
+  //         10
+  //       )}`
+  //     );
 
-      // Check if execute permission is granted
-      const executePermission = Boolean(mode & 0o111); // Check the execute bit
-      if (executePermission) {
-        console.log("Execute permission is granted.");
-      } else {
-        console.log("Execute permission is not granted.");
-      }
-    }
-  });
+  //     // Check if execute permission is granted
+  //     const executePermission = Boolean(mode & 0o111); // Check the execute bit
+  //     if (executePermission) {
+  //       console.log("Execute permission is granted.");
+  //     } else {
+  //       console.log("Execute permission is not granted.");
+  //     }
+  //   }
+  // });
 });
 
 app.get("/yt-dlp", (req, res) => {
