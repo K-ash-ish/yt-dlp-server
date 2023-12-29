@@ -7,6 +7,8 @@ const PORT = 3000;
 
 app.get("/", (req, res) => {
   console.log(os.hostname());
+  console.log(os.platform());
+  console.log(os.type());
   res.send("Hello world");
   ``;
 });
