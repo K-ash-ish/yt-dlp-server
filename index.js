@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 
 app.get("/yt-dlp", (req, res) => {
   const { url } = req.query;
-  const ytDlpPath = path.join(__dirname, "resources", "yt-dlp");
+  const ytDlpPath = path.join(__dirname, "resources", "yt-dlp.exe");
   console.log("Inside YT_DLP ");
   fs.stat(ytDlpPath, (err, stats) => {
     if (err) {
