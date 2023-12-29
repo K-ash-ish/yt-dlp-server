@@ -42,12 +42,9 @@ app.get("/yt-dlp", (req, res) => {
   const ytDlpPath = path.join(__dirname, "resources", "yt-dlp.exe");
   console.log("Inside YT_DLP ");
 
-  let command = `${ytDlpPath} "${url}"`;
   // let command = `${ytDlpPath} -f bv*[ext=mp4]+ba/b -o - ${url}`;
-  console.log("path: ", ytDlpPath);
-  console.log("command: ", command);
 
-  const ls = spawn(command, [], { shell: true });
+  const ls = spawn(ytDlpPath, ["-o" ,"-",url], { shell: true });
 
   res.setHeader("Content-Type", "video/mp4");
   res.setHeader("Content-Disposition", `attachment; filename="video.mp4"`);
